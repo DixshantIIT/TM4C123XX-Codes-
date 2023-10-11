@@ -7,6 +7,7 @@
 #define blue 0x04
 #define green 0x08
 
+
 /* Systick memory mapped registers */
 #define STCTRL *((volatile long *) 0xE000E010)      // control and status
 #define STRELOAD *((volatile long *) 0xE000E014)    // reload value
@@ -28,13 +29,7 @@ void UART_INIT()
     GPIO_PORTE_DIR_R = 0x33;               // setting PE5 and PE1 as output and PE4 and PE1 as input
     GPIO_PORTE_DEN_R |= 0x33;              // setting  digital pins
 
-    UART7_CTL_R &= ~(0x01);                // disabling uart 7 module
-    UART7_IBRD_R =104;                     // setting the baud rate as 9600
-    UART7_FBRD_R = 11;                     // setting baud rate as 9600
-    UART7_LCRH_R = 0x62;;
 
-    UART7_CC_R = 0;                        // enabling system clock as the source for uart
-    UART7_CTL_R |= ((1<<0)|(1<<8)|(1<<9));
 
     // configuring UART 5 th module
     UART5_CTL_R &= ~(0x01);                // disabling uart 5 module
@@ -100,12 +95,12 @@ void GPIO_Interrupt_handler()
 
     if(k & 0X10) //interrupt on switch 1
     {
-        UART7_DR_R = 0xF0;
+        UART5_DR_R = 0xF0;
 
     }
     if(k & 0X01) // Interrupt on switch 2
     {
-        UART7_DR_R = 0xAA;
+        UART5_DR_R = 0xAA;
     }
 
 
