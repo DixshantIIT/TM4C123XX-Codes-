@@ -1,6 +1,28 @@
 #include <stdbool.h>
 #include <stdint.h>
-#include"usbmain.h"
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "inc/hw_gpio.h"
+#include "inc/hw_sysctl.h"
+#include "driverlib/debug.h"
+#include "driverlib/fpu.h"
+#include "driverlib/gpio.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/rom.h"
+#include "driverlib/rom_map.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/systick.h"
+#include "driverlib/uart.h"
+#include "usblib/usblib.h"
+#include "usblib/usbhid.h"
+#include "usblib/device/usbdevice.h"
+#include "usblib/device/usbdhid.h"
+#include "usblib/device/usbdhidkeyb.h"
+#include "drivers/buttons.h"
+#include "utils/uartstdio.h"
+#include "utils/ustdlib.h"
+#include "usb_keyb_structs.h"
+
 #include"tm4c123gh6pm.h"
 #define SYSTICKS_PER_SECOND     100
 
